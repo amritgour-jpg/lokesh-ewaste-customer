@@ -1,0 +1,7 @@
+streamlit
+psycopg[binary]
+pandas
+openpyxl
+reportlab
+supabase
+streamlit-geolocation
