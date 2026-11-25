@@ -233,33 +233,75 @@ hr { border-color: #E3ECE5; }
     .rx-product-card img { height: 112px; }
 }
 
+
+
+/* RecycleX premium home + authentication refresh */
+.rx-topline {display:flex;align-items:center;justify-content:space-between;margin:0 2px 14px;color:#668071;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+.rx-status {display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;background:#E5F5EA;color:#087A43;font-size:10px;font-weight:800;letter-spacing:.3px;}
+.rx-status:before {content:'';width:7px;height:7px;border-radius:50%;background:#35B66A;box-shadow:0 0 0 3px rgba(53,182,106,.14);}
+.rx-brand {position:relative;overflow:hidden;}
+.rx-brand:after {content:'♻';position:absolute;right:18px;top:-28px;font-size:118px;line-height:1;color:rgba(255,255,255,.075);transform:rotate(-16deg);pointer-events:none;}
+.rx-hero {position:relative;overflow:hidden;padding:24px 22px 22px;border-radius:24px;background:linear-gradient(125deg,#E8F7EC 0%,#F7FCF8 58%,#DDF2E3 100%);border:1px solid #D7EBDD;margin:0 0 16px;}
+.rx-hero:after {content:'🌿';position:absolute;right:18px;bottom:7px;font-size:74px;opacity:.22;transform:rotate(-18deg);}
+.rx-hero-title {max-width:520px;font-size:clamp(28px,6vw,40px);}
+.rx-hero-copy {max-width:490px;position:relative;z-index:1;}
+.rx-hero-pill {display:inline-flex;align-items:center;gap:6px;background:#FFFFFF;border:1px solid #D5E9D9;color:#087A43;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;margin-bottom:9px;}
+.rx-feature {transition:transform .18s ease,box-shadow .18s ease;border-radius:18px;}
+.rx-feature:hover {transform:translateY(-3px);box-shadow:0 12px 25px rgba(22,75,42,.09);}
+.rx-auth-intro {text-align:center;padding:7px 8px 14px;}
+.rx-auth-kicker {color:#159454;font-size:10px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase;margin-bottom:6px;}
+.rx-auth-title {font-size:27px;font-weight:800;letter-spacing:-.8px;color:#075B35;line-height:1.15;}
+.rx-auth-copy {font-size:13px;color:#718076;margin-top:7px;}
+.rx-auth-note {display:flex;align-items:center;justify-content:center;gap:7px;color:#688071;font-size:11px;margin:13px 0 4px;}
+.rx-auth-note span {background:#EAF6EE;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;}
+div[role="radiogroup"] {display:flex;gap:8px;background:#EAF4EC;padding:6px;border-radius:15px;width:100%;}
+div[role="radiogroup"] label {flex:1;justify-content:center;background:transparent!important;border:0!important;border-radius:11px!important;padding:9px 10px!important;font-weight:800!important;color:#587063!important;}
+div[role="radiogroup"] label:has(input:checked) {background:#087A43!important;color:white!important;box-shadow:0 4px 12px rgba(8,122,67,.18);}
+div[data-testid="stForm"] {margin-top:8px;}
+.rx-dashboard-hero {padding:21px;border-radius:22px;background:linear-gradient(120deg,#075B35,#0B874B);color:white;margin:2px 0 16px;box-shadow:0 12px 28px rgba(7,91,53,.15);}
+.rx-dashboard-hero .small {font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:#CBEAD5;font-weight:800;}
+.rx-dashboard-hero .big {font-size:27px;line-height:1.15;font-weight:800;margin:7px 0 5px;}
+.rx-dashboard-hero .copy {font-size:13px;color:rgba(255,255,255,.84);}
+.rx-section-label {font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#718477;margin:8px 0 5px;}
+.stCaption {color:#718076;}
+@media (max-width:640px) {
+ .rx-hero {padding:19px 17px;border-radius:20px;}
+ .rx-hero:after {right:8px;font-size:58px;}
+ .rx-feature {padding:11px;min-height:91px;}
+ .rx-feature-title {font-size:12px;}
+ .rx-feature-copy {font-size:10px;}
+ .rx-auth-title {font-size:24px;}
+ .rx-dashboard-hero {padding:18px;border-radius:19px;}
+}
+
 </style>
 """, unsafe_allow_html=True)
 
 # RecycleX visual header
 st.markdown("""
+<div class="rx-topline"><span>SMART E-WASTE COLLECTION</span><span class="rx-status">Greener choices start here</span></div>
 <div class="rx-brand">
   <div class="rx-mark">♻️</div>
   <div>
     <div class="rx-brand-name">RecycleX</div>
-    <div class="rx-brand-tag">SMART E-WASTE COLLECTION</div>
+    <div class="rx-brand-tag">PICKUP MADE SIMPLE · RECYCLING MADE RESPONSIBLE</div>
   </div>
 </div>
 <div class="rx-hero">
-  <div class="rx-eyebrow">A cleaner tomorrow starts today</div>
-  <div class="rx-hero-title">Give your e-waste a responsible next life.</div>
-  <div class="rx-hero-copy">Book a convenient pickup for your old electronics. Simple, responsible e-waste collection in Kolkata.</div>
+  <div class="rx-hero-pill">♻️ &nbsp; RECYCLE SMARTER. LIVE GREENER.</div>
+  <div class="rx-hero-title">Give old appliances a better next life.</div>
+  <div class="rx-hero-copy">Book a convenient pickup for your unused appliances. We make responsible e-waste collection simple, reliable and easy.</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Small service highlights
+# Three service benefits
 f1, f2, f3 = st.columns(3)
 with f1:
-    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">📦</div><div class="rx-feature-title">Easy pickup</div><div class="rx-feature-copy">Request collection online</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">🚚</div><div class="rx-feature-title">Easy pickup</div><div class="rx-feature-copy">Book collection in minutes</div></div>', unsafe_allow_html=True)
 with f2:
-    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">📍</div><div class="rx-feature-title">Location aware</div><div class="rx-feature-copy">Share your pickup GPS</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">📍</div><div class="rx-feature-title">Location aware</div><div class="rx-feature-copy">Share your pickup location</div></div>', unsafe_allow_html=True)
 with f3:
-    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">♻️</div><div class="rx-feature-title">Responsible</div><div class="rx-feature-copy">Support better recycling</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="rx-feature"><div class="rx-feature-icon">🌱</div><div class="rx-feature-title">Responsible</div><div class="rx-feature-copy">Choose a cleaner tomorrow</div></div>', unsafe_allow_html=True)
 
 st.write("")
 
@@ -288,16 +330,23 @@ if st.session_state.get("access_token"):
 # LOGIN AND REGISTRATION
 # ---------------------------------
 if not st.session_state.get("access_token"):
+    st.markdown("""
+    <div class="rx-auth-intro">
+      <div class="rx-auth-kicker">Welcome to a greener way</div>
+      <div class="rx-auth-title">Your next step starts here.</div>
+      <div class="rx-auth-copy">Sign in or create an account to arrange your e-waste pickup.</div>
+    </div>
+    """, unsafe_allow_html=True)
     menu = st.radio(
         "Choose how to continue",
         ["Login", "Register"],
         horizontal=True,
-        key="auth_menu"
+        key="auth_menu",
+        label_visibility="collapsed"
     )
 
     if menu == "Register":
-        st.header("Create your account")
-        st.caption("Join RecycleX to arrange responsible e-waste collection.")
+        st.markdown('<div class="rx-auth-intro"><div class="rx-auth-title">Create your account</div><div class="rx-auth-copy">Join RecycleX and make responsible recycling easier.</div></div>', unsafe_allow_html=True)
 
         with st.form("register_form"):
             name = st.text_input("Full Name")
@@ -330,8 +379,7 @@ if not st.session_state.get("access_token"):
                         st.error("Registration failed. Please check your details and try again.")
 
     else:
-        st.header("Welcome back")
-        st.caption("Log in to book a pickup or view your requests.")
+        st.markdown('<div class="rx-auth-intro"><div class="rx-auth-title">Welcome back 👋</div><div class="rx-auth-copy">Log in to book a pickup and manage your requests.</div></div>', unsafe_allow_html=True)
 
         with st.form("login_form"):
             email = st.text_input("Email Address")
@@ -360,6 +408,8 @@ if not st.session_state.get("access_token"):
                 except Exception:
                     st.error("Login failed. Please check your email and password.")
 
+    st.markdown('<div class="rx-auth-note"><span>🔒</span> Your account details are handled securely.</div>', unsafe_allow_html=True)
+
 # ---------------------------------
 # CUSTOMER DASHBOARD
 # ---------------------------------
@@ -367,8 +417,8 @@ else:
     customer_id = st.session_state["customer_id"]
     customer_name = st.session_state.get("customer_name") or "Customer"
 
-    st.success(f"Welcome, {customer_name}")
-    st.info("📍 Currently serving: Kolkata")
+    st.markdown(f'''<div class="rx-dashboard-hero"><div class="small">YOUR RECYCLEX SPACE</div><div class="big">Welcome, {customer_name} 👋</div><div class="copy">Ready to give your old appliances a responsible next life?</div></div>''', unsafe_allow_html=True)
+    st.markdown('<div class="rx-section-label">Pickup service · Kolkata</div>', unsafe_allow_html=True)
 
     page = st.radio(
         "Your RecycleX dashboard",
