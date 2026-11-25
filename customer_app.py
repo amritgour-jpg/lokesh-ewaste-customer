@@ -401,6 +401,31 @@ else:
         gallery_html += '</div>'
         st.markdown(gallery_html, unsafe_allow_html=True)
 
+        st.subheader("Choose your appliances")
+        selected_products = st.multiselect(
+            "Select all products for this pickup",
+            [
+                "Fridge", "Air Conditioner", "Fan", "Mixer Grinder",
+                "Other Appliances", "Other E-Waste"
+            ],
+            key="selected_pickup_products",
+            placeholder="Choose one or more products"
+        )
+
+        product_quantities = {}
+        if selected_products:
+            st.caption("Enter the quantity for each selected product.")
+            quantity_columns = st.columns(2)
+            for index, product_name in enumerate(selected_products):
+                with quantity_columns[index % 2]:
+                    product_quantities[product_name] = st.number_input(
+                        f"{product_name} quantity",
+                        min_value=1,
+                        value=1,
+                        step=1,
+                        key=f"quantity_{product_name.replace(' ', '_').lower()}"
+                    )
+
         with st.form("pickup_booking_form"):
             name = st.text_input(
                 "Full Name",
@@ -437,13 +462,6 @@ else:
 
             st.text_input("Service City", value="Kolkata", disabled=True)
 
-            category = st.selectbox(
-                "E-Waste Category",
-                [
-                    "Fridge", "Air Conditioner", "Fan", "Mixer Grinder",
-                    "Other Appliances", "Other E-Waste"
-                ]
-            )
             weight = st.number_input(
                 "Estimated Weight (kg)",
                 min_value=0.0,
@@ -465,8 +483,14 @@ else:
             if submit:
                 if not name.strip() or not phone.strip() or not address.strip():
                     st.error("Please enter your name, mobile number and complete pickup address.")
+                elif not selected_products:
+                    st.error("Please select at least one appliance.")
                 else:
                     try:
+                        category = ", ".join(
+                            f"{product}: {int(product_quantities[product])}"
+                            for product in selected_products
+                        )
                         supabase.table("customer_bookings").insert({
                             "customer_user_id": customer_id,
                             "customer_name": name.strip(),
